@@ -1,0 +1,36 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+http://www.springframework.org/schema/security
+http://www.springframework.org/schema/security/spring-security-3.2.xsd
+http://www.springframework.org/schema/util
+http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+ 
+	<http pattern="/resources" security="none" />
+
+	<http use-expressions="true">
+
+		<intercept-url pattern="/**" access="permitAll" />
+
+		<form-login login-page="/home" default-target-url="/home" always-use-default-target="true" />
+		<logout logout-success-url="/home" />
+
+	</http>
+
+	<authentication-manager alias="authenticationManager">
+		<!-- authentication-provider user-service-ref="userServiceImpl">
+		</authentication-provider-->
+		<authentication-provider>
+		    <user-service>
+				<user name="test" password="test" authorities="USER" />
+		    </user-service>
+	  </authentication-provider>
+	</authentication-manager>
+
+	<beans:bean id="textEncryptor"
+		class="org.springframework.security.crypto.encrypt.Encryptors"
+		factory-method="noOpText" />
+</beans:beans> 

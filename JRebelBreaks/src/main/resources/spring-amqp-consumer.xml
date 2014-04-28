@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+    xmlns:int="http://www.springframework.org/schema/integration"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+        http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit-1.1.xsd
+        http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration.xsd"
+    default-autowire="byName">
+
+    <!-- A reference to the org.springframework.amqp.rabbit.connection.ConnectionFactory -->
+    <rabbit:connection-factory id="rabbitConnectionFactory"/>    
+    
+    <!-- Creates a org.springframework.amqp.rabbit.core.RabbitAdmin    to manage exchanges, queues and bindings -->
+    <rabbit:admin connection-factory="rabbitConnectionFactory"/>    
+    
+    <!-- Creates a org.springframework.amqp.rabbit.core.RabbitTemplate for access to the broker -->
+    <rabbit:template id="amqpTemplate" connection-factory="rabbitConnectionFactory"/>
+    
+    <!-- Queues -->
+    <rabbit:queue id="myQueue" name="myQueue" />
+    
+    <!-- Exchanges -->
+    <rabbit:topic-exchange  name="eventsExchange">
+      <rabbit:bindings>
+        <rabbit:binding queue="myQueue" pattern="#.MyEvent" />
+      </rabbit:bindings>            
+    </rabbit:topic-exchange>
+    
+  <rabbit:listener-container connection-factory="rabbitConnectionFactory" acknowledge="auto">
+      <rabbit:listener queues="myQueue" ref="myService" method="handle" />
+  </rabbit:listener-container>        
+
+</beans>
+
