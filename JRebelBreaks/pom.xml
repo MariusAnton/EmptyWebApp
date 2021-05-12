@@ -19,7 +19,7 @@
 		<org.hibernate.validation-version>5.1.0.Final</org.hibernate.validation-version>
 		<org.mongodb.java.driver-version>2.8.0</org.mongodb.java.driver-version>
 		<org.springframework.data.mongodb-version>1.2.0.BUILD-SNAPSHOT</org.springframework.data.mongodb-version>
-		<org.apache.solr-version>4.1.0</org.apache.solr-version>
+		<org.apache.solr-version>8.8.2</org.apache.solr-version>
 		<org.springframework.data.solr-version>1.0.0.M1</org.springframework.data.solr-version>
 		<spring-data-commons-core-version>1.5.0.BUILD-SNAPSHOT</spring-data-commons-core-version>
 		<webapp-runner-version>7.0.40.0</webapp-runner-version>
