@@ -28,7 +28,7 @@
 		<org.slf4j-version>1.7.5</org.slf4j-version>
 		<junit-version>4.10</junit-version>
 		<log4j-version>1.2.17</log4j-version>
-		<org.apache.httpcomponents-version>4.3</org.apache.httpcomponents-version>
+		<org.apache.httpcomponents-version>4.5.13</org.apache.httpcomponents-version>
 		<org.aspectj-version>1.7.1</org.aspectj-version>
 		<com.vividsolutions.jts-version>1.13</com.vividsolutions.jts-version>	
 		<org.codehaus.jackson-version>1.9.9</org.codehaus.jackson-version>	
