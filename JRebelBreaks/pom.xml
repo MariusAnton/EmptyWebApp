@@ -33,7 +33,7 @@
 		<com.vividsolutions.jts-version>1.13</com.vividsolutions.jts-version>	
 		<org.codehaus.jackson-version>1.9.9</org.codehaus.jackson-version>	
 		<storm-version>0.8.2</storm-version>
-		<zookeeper-version>3.3.6</zookeeper-version>
+		<zookeeper-version>3.4.14</zookeeper-version>
 	</properties>
 
 	<profiles>
